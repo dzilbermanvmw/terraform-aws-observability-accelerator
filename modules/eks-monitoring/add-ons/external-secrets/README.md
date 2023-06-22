@@ -1,6 +1,6 @@
 # External Secrets Operator Kubernetes addon
 
-This deploys an EKS Cluster with the External Secrets Operator. The cluster is populated with a ClusterSecretStore and ExternalSecret using Grafana API Key secret from AWS Secret Manager. A secret store for each AWS Secret Manager is created. Store use IRSA (IAM Roles For Service Account) to retrieve the secret values from AWS.
+This deploys an EKS Cluster with the External Secrets Operator. The cluster is populated with a ClusterSecretStore and ExternalSecret using Grafana API Key secret from AWS SSM Parameter Store. A secret store for each AWS SSM Parameter Store is created. Store use IRSA (IAM Roles For Service Account) to retrieve the secret values from AWS.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -23,8 +23,8 @@ This deploys an EKS Cluster with the External Secrets Operator. The cluster is p
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_cluster_secretstore_role"></a> [cluster\_secretstore\_role](#module\_cluster\_secretstore\_role) | github.com/aws-ia/terraform-aws-eks-blueprints//modules/irsa | v4.28.0 |
-| <a name="module_external_secrets"></a> [external\_secrets](#module\_external\_secrets) | github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/external-secrets | v4.28.0 |
+| <a name="module_cluster_secretstore_role"></a> [cluster\_secretstore\_role](#module\_cluster\_secretstore\_role) | github.com/aws-ia/terraform-aws-eks-blueprints//modules/irsa | v4.32.0 |
+| <a name="module_external_secrets"></a> [external\_secrets](#module\_external\_secrets) | github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/external-secrets | v4.32.0 |
 
 ## Resources
 
@@ -32,8 +32,7 @@ This deploys an EKS Cluster with the External Secrets Operator. The cluster is p
 |------|------|
 | [aws_iam_policy.cluster_secretstore](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_kms_key.secrets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
-| [aws_secretsmanager_secret.secret](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret) | resource |
-| [aws_secretsmanager_secret_version.secret](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret_version) | resource |
+| [aws_ssm_parameter.secret](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
 | [kubectl_manifest.cluster_secretstore](https://registry.terraform.io/providers/gavinbunney/kubectl/latest/docs/resources/manifest) | resource |
 | [kubectl_manifest.secret](https://registry.terraform.io/providers/gavinbunney/kubectl/latest/docs/resources/manifest) | resource |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
